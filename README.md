@@ -19,7 +19,7 @@ To implement this project, you need to implement the following functions and con
 
 * `Auth` - this function should implement a custom authorizer for API Gateway that should be added to all other functions.
 
-* `GetPostss` - should return all POSTs for a current user. A user id can be extracted from a JWT token that is sent by the frontend
+* `GetPosts` - should return all POSTs for a current user. A user id can be extracted from a JWT token that is sent by the frontend
 
 It should return data that looks like this:
 
@@ -54,7 +54,7 @@ It receives a new POST item to be created in JSON format that looks like this:
 }
 ```
 
-It should return a new TODO item that looks like this:
+It should return a new POST item that looks like this:
 
 ```json
 {
