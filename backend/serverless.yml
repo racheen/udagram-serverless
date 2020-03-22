@@ -32,11 +32,8 @@ custom:
         schema:
           required:
             - name
-            - datePosted
           properties:
             name:
-              type: string
-            datePosted:
               type: string
               
 functions:
@@ -74,7 +71,6 @@ functions:
             description: "Create a new post item"
             requestModels:
               "application/json": CreatePostRequest
-          reqValidatorName: onlyBody
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-create-post-role-${self:provider.stage}
     iamRoleStatements:
       - Effect: Allow
@@ -101,7 +97,6 @@ functions:
             description: "Update a post item"
             requestModels:
               "application/json": CreatePostRequest
-          reqValidatorName: onlyBody
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-post-role-${self:provider.stage}
     iamRoleStatements:
       - Effect: Allow
@@ -125,7 +120,7 @@ functions:
         Action:
           - dynamodb:*
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.POSTS_TABLE}
-        
+
 resources:
   Resources:
     # TODO: Add any necessary AWS resources

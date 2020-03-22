@@ -9,7 +9,7 @@ import { createLogger } from '../../utils/logger'
 const logger = createLogger('createPost')
 
 const docClient = new AWS.DynamoDB.DocumentClient()
-const postTable = process.env.TODOS_TABLE
+const postTable = process.env.POSTS_TABLE
 const s3BucketName = process.env.S3_BUCKET_NAME
 const s3 = new AWS.S3({
   signatureVersion: 'v4'
@@ -30,7 +30,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     const todoItem = {
       postId,
       userId: parseUserId(jwtToken),
-      datePosted: new Date().getTime().toString(),
+      datePosted: new Date().toString(),
       attachmentUrl: `https://${s3BucketName}.s3.amazonaws.com/${postId}`,
       ...newTodo
     }
